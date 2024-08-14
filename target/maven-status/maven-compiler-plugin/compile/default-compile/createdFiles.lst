@@ -1,0 +1,14 @@
+com\masiv\movies\models\Ticket.class
+com\masiv\movies\models\Function.class
+com\masiv\movies\models\Report.class
+com\masiv\movies\models\Theater.class
+com\masiv\movies\validation\TheaterValidator.class
+com\masiv\movies\repositories\MovieRepository.class
+com\masiv\movies\services\MovieService.class
+com\masiv\movies\validation\MovieValidator.class
+com\masiv\movies\models\Movie.class
+com\masiv\movies\MoviesApplication.class
+com\masiv\movies\services\TheaterService.class
+com\masiv\movies\controller\MovieController.class
+com\masiv\movies\controller\TheaterController.class
+com\masiv\movies\repositories\TheaterRepository.class
