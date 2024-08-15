@@ -1,0 +1,9 @@
+FROM Openjdk:11-jre-slim
+
+WORKDIR /app
+
+COPY target/movies-0.0.3.jar /app/movies-0.0.3.jar
+
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-jar", "movies-0.0.3.jar"]

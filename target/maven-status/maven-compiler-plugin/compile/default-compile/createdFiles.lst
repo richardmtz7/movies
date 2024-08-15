@@ -10,12 +10,13 @@ com\masiv\movies\service\MovieService.class
 com\masiv\movies\repositories\ITicketRepository.class
 com\masiv\movies\models\Movie.class
 com\masiv\movies\MoviesApplication.class
-com\masiv\movies\models\User.class
+com\masiv\movies\controller\ReportController.class
 com\masiv\movies\validation\FunctionValidator.class
 com\masiv\movies\service\impl\FunctionServiceImpl.class
 com\masiv\movies\controller\TheaterController.class
 com\masiv\movies\service\impl\TheaterServiceImpl.class
-com\masiv\movies\models\Report.class
+com\masiv\movies\service\impl\ReportServiceImpl.class
+com\masiv\movies\service\ReportService.class
 com\masiv\movies\service\TheaterService.class
 com\masiv\movies\validation\MovieValidator.class
 com\masiv\movies\repositories\IFunctionRepository.class

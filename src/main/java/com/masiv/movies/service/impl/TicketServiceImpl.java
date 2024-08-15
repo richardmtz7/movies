@@ -11,25 +11,25 @@ import org.springframework.stereotype.Service;
 import com.masiv.movies.models.Function;
 import com.masiv.movies.models.Theater;
 import com.masiv.movies.models.Ticket;
-import com.masiv.movies.repositories.IFunctionRepository;
-import com.masiv.movies.repositories.ITheaterRepository;
 import com.masiv.movies.repositories.ITicketRepository;
+import com.masiv.movies.service.FunctionService;
+import com.masiv.movies.service.TheaterService;
 import com.masiv.movies.service.TicketService;
 import com.masiv.movies.validation.TheaterValidator;
 import com.masiv.movies.validation.TicketValidator;
 
 @Service
-public class TicketServiceImpl implements TicketService{
+final public class TicketServiceImpl implements TicketService{
 	@Autowired
 	private ITicketRepository iTicketRepository;
 	@Autowired
-	private IFunctionRepository iFunctionRepository;
+	private FunctionService functionService;
 	@Autowired
-	private ITheaterRepository iTheaterRepository;
+	private TheaterService theaterService;
 	@Autowired
     private StringRedisTemplate redisTemplate;
 	@Override
-	public Ticket buyTicket(Ticket ticket) {
+	public Ticket buyTicket(Ticket ticket) throws Exception {
 		String generationReserveId = UUID.randomUUID().toString();
 		reserveSeats(generationReserveId, ticket.getFunctionId(), ticket.getNumberOfTickets());
 		String lockKey = "lock:function:" + ticket.getFunctionId();
@@ -40,17 +40,17 @@ public class TicketServiceImpl implements TicketService{
         }
         try {
         	TicketValidator.validateTicketPurchase(ticket);
-            Function function = iFunctionRepository.findById(ticket.getFunctionId())
-                    .orElseThrow(() -> new IllegalArgumentException("Function not found"));
-            Theater theater = iTheaterRepository.findById(function.getAssignedTheater())
-            		.orElseThrow(() -> new IllegalArgumentException("Theater not available"));
+        	Function function = functionService.getFunctionById(ticket.getFunctionId());
+        	function.setTicketsSold(function.getTicketsSold() + ticket.getNumberOfTickets());
+        	Theater theater = theaterService.getTheaterById(function.getAssignedTheater());
             if (theater.getAvailableSeats() < ticket.getNumberOfTickets()) {
                 throw new IllegalArgumentException("Not enough available seats");
             }
+            iTicketRepository.save(ticket);
             TheaterValidator.theaterValidator(theater);
             theater.setAvailableSeats(theater.getAvailableSeats() - ticket.getNumberOfTickets());
-            iTheaterRepository.save(theater);
-            iTicketRepository.save(ticket);
+            functionService.recordDateFunction(function);
+            theaterService.updateAvailableSeats(theater);
             completePurchase(generationReserveId);
             return ticket;
         } finally {

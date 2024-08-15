@@ -9,7 +9,7 @@ import com.masiv.movies.service.TheaterService;
 import com.masiv.movies.validation.TheaterValidator;
 
 @Service
-public class TheaterServiceImpl implements TheaterService{
+final public class TheaterServiceImpl implements TheaterService{
 	@Autowired
 	private ITheaterRepository iTheaterRepository;
 	@Override

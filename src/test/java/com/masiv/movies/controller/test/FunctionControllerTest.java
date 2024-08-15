@@ -40,7 +40,7 @@ public class FunctionControllerTest {
 
     @Test
     public void testRecordDateFunction_ValidFunction() {
-        Function function = new Function(1L, 1L, 1L, new Date(), new Date());
+        Function function = new Function(1L, 1L, 1L, new Date(), new Date(), 1L);
         when(functionRepository.save(any(Function.class))).thenReturn(function);
         Function result = functionService.recordDateFunction(function);
         assertNotNull(result);
@@ -49,7 +49,7 @@ public class FunctionControllerTest {
     }
     @Test
     public void testCancelFunction_ValidFunction() throws Exception {
-    	Function function = new Function(1L, 1L, 1L, new Date(), new Date());
+    	Function function = new Function(1L, 1L, 1L, new Date(), new Date(), 1L);
     	Theater theater = new Theater(1L, "Theater 1", 1L, 100L, 100L, "Description");
         when(theaterService.getTheaterById(anyLong())).thenReturn(theater);
         functionService.cancelFunction(function);
@@ -58,7 +58,7 @@ public class FunctionControllerTest {
     }
     @Test
     public void testGetFunctionById_FunctionExists() throws Exception {
-        Function function = new Function(1L, 1L, 1L, new Date(), new Date());
+        Function function = new Function(1L, 1L, 1L, new Date(), new Date(), 1L);
         Theater theater = new Theater(1L, "Theater 1", 1L, 100L, 100L, "Description");
         when(functionRepository.findById(anyLong())).thenReturn(Optional.of(function));
         when(theaterService.getTheaterById(anyLong())).thenReturn(theater);
@@ -79,7 +79,7 @@ public class FunctionControllerTest {
     @Test
     public void testGetFunctions() {
         List<Function> functions = new ArrayList<>();
-        functions.add(new Function(1L, 1L, 1L, new Date(), new Date()));
+        functions.add(new Function(1L, 1L, 1L, new Date(), new Date(), 1L));
         when(functionRepository.findAll()).thenReturn(functions);
         List<Function> result = functionService.getFunctions();
         assertNotNull(result);

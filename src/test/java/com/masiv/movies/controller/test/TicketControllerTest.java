@@ -30,7 +30,7 @@ public class TicketControllerTest {
     }
 
     @Test
-    public void testPurchaseTicket_Success() {
+    public void testPurchaseTicket_Success() throws Exception {
         Ticket ticket = new Ticket(1L, 2L, "John Doe", "25", 1L, "john.doe@example.com");
         when(ticketService.buyTicket(any(Ticket.class))).thenReturn(ticket);
 
@@ -41,7 +41,7 @@ public class TicketControllerTest {
     }
 
     @Test
-    public void testPurchaseTicket_BadRequest() {
+    public void testPurchaseTicket_BadRequest() throws Exception {
         when(ticketService.buyTicket(any(Ticket.class))).thenThrow(IllegalArgumentException.class);
 
         Ticket ticket = new Ticket();
@@ -51,7 +51,7 @@ public class TicketControllerTest {
     }
 
     @Test
-    public void testPurchaseTicket_ServerError() {
+    public void testPurchaseTicket_ServerError() throws Exception {
         when(ticketService.buyTicket(any(Ticket.class))).thenThrow(RuntimeException.class);
 
         Ticket ticket = new Ticket();

@@ -9,7 +9,7 @@ import com.masiv.movies.service.MovieService;
 import com.masiv.movies.validation.MovieValidator;
 
 @Service
-public class MovieServiceImpl implements MovieService {
+final public class MovieServiceImpl implements MovieService {
 	@Autowired
 	private IMovieRepository iMovieRepository;
 	@Override

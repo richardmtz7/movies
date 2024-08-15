@@ -20,4 +20,5 @@ public class Function {
 	private Long assignedTheater;
 	private Date startDate;
 	private Date endDate;
+	private Long ticketsSold = 0L;
 }
