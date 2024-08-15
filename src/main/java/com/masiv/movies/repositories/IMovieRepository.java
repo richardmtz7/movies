@@ -4,4 +4,4 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.masiv.movies.models.Movie;
 
-public interface MovieRepository extends CrudRepository<Movie, Long>{}
+public interface IMovieRepository extends CrudRepository<Movie, Long>{}

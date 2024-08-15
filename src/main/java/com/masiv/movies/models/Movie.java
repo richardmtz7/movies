@@ -16,7 +16,7 @@ public class Movie {
 	private Long id;
 	private String title;
 	private String director;
-	private String gender;
+	private String genre;
 	private Long duration;
 	private String synopsis;
 	private Integer releaseYear;

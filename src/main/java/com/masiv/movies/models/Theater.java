@@ -16,6 +16,7 @@ public class Theater {
 	private Long theaterId;
 	private String theaterName;
 	private Long cinemaId;
-	private Integer totalSeatingCapacity;
+	private Long availableSeats;
+	private Long totalSeatingCapacity;
 	private String description; 
 }

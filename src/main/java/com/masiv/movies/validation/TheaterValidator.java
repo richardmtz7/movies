@@ -16,5 +16,16 @@ public class TheaterValidator {
 		if (theater.getTheaterId() == null || theater.getTheaterId() <= 0) {
 			throw new IllegalArgumentException("The theater cannot be negative");
 		}
+		if(theater.getAvailableSeats() > theater.getTotalSeatingCapacity()) {
+			throw new IllegalArgumentException("The available seats cannot be great than total seats capacity");
+		}
+		if(theater.getAvailableSeats() == 0) {
+			throw new IllegalArgumentException("Unavailable seats");
+		}
+	}
+	public static void theaterExistValidator(Theater theater) throws Exception {
+		if(theater.getTheaterId() == null) {
+			throw new Exception("Theater not found");
+		}
 	}
 }

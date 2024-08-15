@@ -4,4 +4,4 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.masiv.movies.models.Theater;
 
-public interface TheaterRepository extends CrudRepository<Theater, Long> {}
+public interface ITheaterRepository extends CrudRepository<Theater, Long> {}

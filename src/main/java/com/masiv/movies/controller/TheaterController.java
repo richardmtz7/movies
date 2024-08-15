@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.masiv.movies.models.Theater;
-import com.masiv.movies.services.TheaterService;
+import com.masiv.movies.service.TheaterService;
 
 @RestController
 @RequestMapping("/theater")

@@ -1,18 +1,21 @@
-package com.masiv.movies.services;
+package com.masiv.movies.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.masiv.movies.models.Movie;
-import com.masiv.movies.repositories.MovieRepository;
+import com.masiv.movies.repositories.IMovieRepository;
+import com.masiv.movies.service.MovieService;
 import com.masiv.movies.validation.MovieValidator;
 
 @Service
-public class MovieService {
+public class MovieServiceImpl implements MovieService {
 	@Autowired
-	private MovieRepository movieRepository;
+	private IMovieRepository iMovieRepository;
+	@Override
 	public Movie createMovie(Movie movie) {
 		MovieValidator.validateMovie(movie);
-		return movieRepository.save(movie);
+		return iMovieRepository.save(movie);
 	}
+
 }

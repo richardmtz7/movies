@@ -2,6 +2,7 @@ package com.masiv.movies.models;
 
 import java.util.Date;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
 import lombok.AllArgsConstructor;
@@ -13,8 +14,10 @@ import lombok.NoArgsConstructor;
 @Data
 @RedisHash("Function")
 public class Function {
-	private Integer assignedMovie;
-	private Integer assignedTheater;
+	@Id
+	private Long functionId;
+	private Long assignedMovie;
+	private Long assignedTheater;
 	private Date startDate;
 	private Date endDate;
 }
