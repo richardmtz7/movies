@@ -1,5 +1,7 @@
 package com.masiv.movies.validation;
 
+import java.util.NoSuchElementException;
+
 import com.masiv.movies.models.Function;
 
 public class FunctionValidator {
@@ -16,13 +18,20 @@ public class FunctionValidator {
 		if(function.getAssignedTheater() == null) {
 			throw new IllegalArgumentException("The theater assignment must not be null or empty");
 		}
-		if(function.getEndDate().before(function.getStartDate())) {
+		if(function.getEndDate().isBefore(function.getStartDate())) {
 			throw new IllegalArgumentException("The end date must be after the start date");
+		}
+		if(function.getStatusFunction() == 0) {
+			throw new NoSuchElementException("The function has already been canceled");
 		}
 	}
 	public static void functionIdValidator(Function function) {
 		if (function.getId() == null) {
 			throw new IllegalArgumentException("The function has not been registered");
 		}
+		if(function.getStatusFunction() == 0) {
+			throw new NoSuchElementException("The function has already been canceled");
+		}
 	}
+	
 }

@@ -1,6 +1,7 @@
 package com.masiv.movies.controller;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,40 +29,45 @@ public class FunctionController {
 			
 			return new ResponseEntity<>(createFunction, HttpStatus.CREATED);
 		} catch (IllegalArgumentException e) {
-			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+			throw new IllegalArgumentException(e.getMessage());
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
 		}
 	}
 	@GetMapping("get/{id}")
-	public ResponseEntity<Function> getFunctionBydId(@PathVariable String id){
+	public ResponseEntity<Function> getFunctionBydId(@PathVariable String id) throws Exception{
 		try { 
 	        Function function = functionServiceImpl.getFunctionById(id);
 	        if (function == null) {
-	            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	            throw new NoSuchElementException();
+	        }
+	        if(function.getStatusFunction() == 0) {
+	        	throw new NoSuchElementException();
 	        }
 	        return new ResponseEntity<>(function, HttpStatus.OK);
-	    } catch (Exception e) {
-	        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	    } catch (NoSuchElementException e) {
+	    	throw new NoSuchElementException(e.getMessage());
 	    }
 	}
 	@DeleteMapping("/cancel")
-    public ResponseEntity<Void> cancelFunction(@RequestBody Function function) {
+    public ResponseEntity<Void> cancelFunction(@RequestBody Function function) throws Exception {
         try {
             functionServiceImpl.cancelFunction(function);
             
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (IllegalArgumentException e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        	throw new IllegalArgumentException(e.getMessage());
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        	throw new Exception(e.getMessage());
         }
     }
 	@GetMapping("get/all")
-	public ResponseEntity<List<Function>> getAllFunctions(){
+	public ResponseEntity<List<Function>> getAllFunctions() throws Exception{
 		try {
             List<Function> functions = functionServiceImpl.getFunctions();
             return new ResponseEntity<>(functions, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        	throw new Exception(e.getMessage());
         }
 	}
 }

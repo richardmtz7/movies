@@ -3,4 +3,3 @@ com\masiv\movies\MoviesApplicationTests.class
 com\masiv\movies\controller\test\MovieControllerTest.class
 com\masiv\movies\controller\test\FunctionControllerTest.class
 com\masiv\movies\controller\test\TheaterControllerTest.class
-com\masiv\movies\controller\test\TicketControllerTest.class

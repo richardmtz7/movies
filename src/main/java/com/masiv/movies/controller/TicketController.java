@@ -11,21 +11,23 @@ import org.springframework.web.bind.annotation.RestController;
 import com.masiv.movies.models.Ticket;
 import com.masiv.movies.service.TicketService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/ticket")
 public class TicketController {
 	@Autowired
 	private TicketService ticketService;
 	@PostMapping("/purchase")
-    public ResponseEntity<String> purchaseTicket(@RequestBody Ticket ticket) {
+    public ResponseEntity<String> purchaseTicket(@Valid @RequestBody Ticket ticket) throws Exception {
         try {
             Ticket created = ticketService.buyTicket(ticket);
             
             return new ResponseEntity<>("Purchase successful.\n Ticket: " + created.getId(), HttpStatus.CREATED);
         } catch (IllegalArgumentException e) {
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+            throw new IllegalArgumentException(e.getMessage());
         } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            throw new Exception(e.getMessage());
         }
     }
 }

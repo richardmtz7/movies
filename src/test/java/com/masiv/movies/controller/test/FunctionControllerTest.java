@@ -5,10 +5,11 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
-import java.util.Optional;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.ArrayList;
-import java.util.Date;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,7 +25,7 @@ import com.masiv.movies.service.impl.TheaterServiceImpl;
 
 public class FunctionControllerTest {
 
-    @Mock
+	@Mock
     private IFunctionRepository functionRepository;
 
     @Mock
@@ -40,26 +41,32 @@ public class FunctionControllerTest {
 
     @Test
     public void testRecordDateFunction_ValidFunction() throws Exception {
-        Function function = new Function("1", "1", "1", new Date(), new Date(), 100);
+        LocalDateTime now = LocalDateTime.now();
+        Function function = new Function("1", "1", "1", now, now.plusHours(2), 1, 0);
         when(functionRepository.save(any(Function.class))).thenReturn(function);
         Function result = functionService.recordDateFunction(function);
         assertNotNull(result);
         assertEquals("1", result.getAssignedMovie());
         verify(functionRepository, times(1)).save(function);
     }
+
     @Test
     public void testCancelFunction_ValidFunction() throws Exception {
-    	Function function = new Function("1", "1", "1", new Date(), new Date(), 100);
-    	Theater theater = new Theater("1", "1", "1", 0, 0, "Test description");
+        LocalDateTime now = LocalDateTime.now();
+        Function function = new Function("1", "1", "1", now, now.plusHours(2), 1, 0);
+        Theater theater = new Theater("1", "1", "1", 10, 10, "Test description");
         when(theaterService.getTheaterById(any())).thenReturn(theater);
+        when(functionRepository.save(any(Function.class))).thenReturn(function);
         functionService.cancelFunction(function);
         verify(theaterService, times(1)).updateAvailableSeats(theater);
-        verify(functionRepository, times(1)).deleteById(function.getId());
+        verify(functionRepository, times(1)).save(function);
     }
+
     @Test
     public void testGetFunctionById_FunctionExists() throws Exception {
-        Function function = new Function("1", "1", "1", new Date(), new Date(), 100);
-        Theater theater = new Theater("1", "1", "1", 0, 0, "Test description");
+        LocalDateTime now = LocalDateTime.now();
+        Function function = new Function("1", "1", "1", now, now.plusHours(2), 1, 0);
+        Theater theater = new Theater("1", "1", "1", 10, 10, "Test description");
         when(functionRepository.findById(any())).thenReturn(Optional.of(function));
         when(theaterService.getTheaterById(any())).thenReturn(theater);
         Function result = functionService.getFunctionById("1");
@@ -67,19 +74,34 @@ public class FunctionControllerTest {
         assertEquals("1", result.getAssignedMovie());
         verify(functionRepository, times(1)).findById("1");
     }
+
     @Test
     public void testGetFunctionById_FunctionNotFound() {
         when(functionRepository.findById(any())).thenReturn(Optional.empty());
-        Exception exception = assertThrows(Exception.class, () -> {
+        Exception exception = assertThrows(NoSuchElementException.class, () -> {
             functionService.getFunctionById("1");
         });
         assertEquals("Function not found", exception.getMessage());
         verify(functionRepository, times(1)).findById("1");
     }
+
+    @Test
+    public void testGetFunctionById_FunctionCancelled() {
+        LocalDateTime now = LocalDateTime.now();
+        Function function = new Function("1", "1", "1", now, now.plusHours(2), 0, 0);
+        when(functionRepository.findById(any())).thenReturn(Optional.of(function));
+        Exception exception = assertThrows(NoSuchElementException.class, () -> {
+            functionService.getFunctionById("1");
+        });
+        assertEquals("The function was cancelled", exception.getMessage());
+        verify(functionRepository, times(1)).findById("1");
+    }
+
     @Test
     public void testGetFunctions() {
+        LocalDateTime now = LocalDateTime.now();
         List<Function> functions = new ArrayList<>();
-        functions.add(new Function("1", "1", "1", new Date(), new Date(), 100));
+        functions.add(new Function("1", "1", "1", now, now.plusHours(2), 1, 0));
         when(functionRepository.findAll()).thenReturn(functions);
         List<Function> result = functionService.getFunctions();
         assertNotNull(result);

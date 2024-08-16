@@ -13,8 +13,5 @@ public class TicketValidator {
         if (ticket.getBuyerName() == null || ticket.getBuyerName().isEmpty()) {
             throw new IllegalArgumentException("Buyer name cannot be empty");
         }
-        if (ticket.getBuyerEmail() == null || ticket.getBuyerEmail().isEmpty()) {
-            throw new IllegalArgumentException("Buyer email cannot be empty");
-        }
     }
 }

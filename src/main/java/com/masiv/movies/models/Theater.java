@@ -18,5 +18,5 @@ public class Theater {
 	private String cinemaId;
 	private Integer availableSeats;
 	private Integer totalSeatingCapacity;
-	private String description; 
+	private String description;
 }

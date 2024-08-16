@@ -6,11 +6,14 @@ com\masiv\movies\models\Theater.class
 com\masiv\movies\service\impl\TicketServiceImpl.class
 com\masiv\movies\service\impl\MovieServiceImpl.class
 com\masiv\movies\validation\TheaterValidator.class
+com\masiv\movies\exceptions\ExceptionsHandler.class
 com\masiv\movies\service\MovieService.class
 com\masiv\movies\repositories\ITicketRepository.class
 com\masiv\movies\models\Movie.class
 com\masiv\movies\MoviesApplication.class
 com\masiv\movies\controller\ReportController.class
+com\masiv\movies\utils\DateUtils.class
+com\masiv\movies\exceptions\ErrorResponse.class
 com\masiv\movies\validation\FunctionValidator.class
 com\masiv\movies\service\impl\FunctionServiceImpl.class
 com\masiv\movies\controller\TheaterController.class
@@ -18,6 +21,7 @@ com\masiv\movies\service\impl\TheaterServiceImpl.class
 com\masiv\movies\service\impl\ReportServiceImpl.class
 com\masiv\movies\service\ReportService.class
 com\masiv\movies\service\TheaterService.class
+com\masiv\movies\service\impl\RedisServiceImpl.class
 com\masiv\movies\models\Movie$MovieBuilder.class
 com\masiv\movies\validation\MovieValidator.class
 com\masiv\movies\repositories\IFunctionRepository.class
@@ -26,4 +30,5 @@ com\masiv\movies\controller\FunctionController.class
 com\masiv\movies\service\FunctionService.class
 com\masiv\movies\validation\TicketValidator.class
 com\masiv\movies\controller\MovieController.class
+com\masiv\movies\service\RedisService.class
 com\masiv\movies\service\TicketService.class

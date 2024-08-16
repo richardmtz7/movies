@@ -3,6 +3,8 @@ C:\Users\liset\OneDrive\Escritorio\workspace\movies\movies\src\main\java\com\mas
 C:\Users\liset\OneDrive\Escritorio\workspace\movies\movies\src\main\java\com\masiv\movies\controller\ReportController.java
 C:\Users\liset\OneDrive\Escritorio\workspace\movies\movies\src\main\java\com\masiv\movies\controller\TheaterController.java
 C:\Users\liset\OneDrive\Escritorio\workspace\movies\movies\src\main\java\com\masiv\movies\controller\TicketController.java
+C:\Users\liset\OneDrive\Escritorio\workspace\movies\movies\src\main\java\com\masiv\movies\exceptions\ErrorResponse.java
+C:\Users\liset\OneDrive\Escritorio\workspace\movies\movies\src\main\java\com\masiv\movies\exceptions\ExceptionsHandler.java
 C:\Users\liset\OneDrive\Escritorio\workspace\movies\movies\src\main\java\com\masiv\movies\models\Function.java
 C:\Users\liset\OneDrive\Escritorio\workspace\movies\movies\src\main\java\com\masiv\movies\models\Movie.java
 C:\Users\liset\OneDrive\Escritorio\workspace\movies\movies\src\main\java\com\masiv\movies\models\Theater.java
@@ -15,13 +17,16 @@ C:\Users\liset\OneDrive\Escritorio\workspace\movies\movies\src\main\java\com\mas
 C:\Users\liset\OneDrive\Escritorio\workspace\movies\movies\src\main\java\com\masiv\movies\service\FunctionService.java
 C:\Users\liset\OneDrive\Escritorio\workspace\movies\movies\src\main\java\com\masiv\movies\service\impl\FunctionServiceImpl.java
 C:\Users\liset\OneDrive\Escritorio\workspace\movies\movies\src\main\java\com\masiv\movies\service\impl\MovieServiceImpl.java
+C:\Users\liset\OneDrive\Escritorio\workspace\movies\movies\src\main\java\com\masiv\movies\service\impl\RedisServiceImpl.java
 C:\Users\liset\OneDrive\Escritorio\workspace\movies\movies\src\main\java\com\masiv\movies\service\impl\ReportServiceImpl.java
 C:\Users\liset\OneDrive\Escritorio\workspace\movies\movies\src\main\java\com\masiv\movies\service\impl\TheaterServiceImpl.java
 C:\Users\liset\OneDrive\Escritorio\workspace\movies\movies\src\main\java\com\masiv\movies\service\impl\TicketServiceImpl.java
 C:\Users\liset\OneDrive\Escritorio\workspace\movies\movies\src\main\java\com\masiv\movies\service\MovieService.java
+C:\Users\liset\OneDrive\Escritorio\workspace\movies\movies\src\main\java\com\masiv\movies\service\RedisService.java
 C:\Users\liset\OneDrive\Escritorio\workspace\movies\movies\src\main\java\com\masiv\movies\service\ReportService.java
 C:\Users\liset\OneDrive\Escritorio\workspace\movies\movies\src\main\java\com\masiv\movies\service\TheaterService.java
 C:\Users\liset\OneDrive\Escritorio\workspace\movies\movies\src\main\java\com\masiv\movies\service\TicketService.java
+C:\Users\liset\OneDrive\Escritorio\workspace\movies\movies\src\main\java\com\masiv\movies\utils\DateUtils.java
 C:\Users\liset\OneDrive\Escritorio\workspace\movies\movies\src\main\java\com\masiv\movies\validation\FunctionValidator.java
 C:\Users\liset\OneDrive\Escritorio\workspace\movies\movies\src\main\java\com\masiv\movies\validation\MovieValidator.java
 C:\Users\liset\OneDrive\Escritorio\workspace\movies\movies\src\main\java\com\masiv\movies\validation\TheaterValidator.java

@@ -13,9 +13,6 @@ public class TheaterValidator {
 		if (theater.getTotalSeatingCapacity() == null || theater.getTotalSeatingCapacity() <= 0) {
 			throw new IllegalArgumentException("The total seating capacity cannot be zero");
 		}
-		if (theater.getId().isEmpty()) {
-			throw new IllegalArgumentException("The theater cannot be negative");
-		}
 		if(theater.getAvailableSeats() > theater.getTotalSeatingCapacity()) {
 			throw new IllegalArgumentException("The available seats cannot be great than total seats capacity");
 		}

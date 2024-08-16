@@ -1,6 +1,6 @@
 package com.masiv.movies.models;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
@@ -18,7 +18,8 @@ public class Function {
 	private String id;
 	private String assignedMovie;
 	private String assignedTheater;
-	private Date startDate;
-	private Date endDate;
+	private LocalDateTime  startDate;
+	private LocalDateTime  endDate;
+	private Integer statusFunction = 1;
 	private Integer ticketsSold = 0;
 }
