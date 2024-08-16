@@ -1,5 +1,7 @@
 package com.masiv.movies.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,5 +46,9 @@ final public class TheaterServiceImpl implements TheaterService{
 		if (theater.getAvailableSeats() == 0) {
 			throw new Exception("Seats unavailable"); 
 		}
+	}
+	@Override
+	public List<Theater> getAllTheaters() {
+		return (List<Theater>) iTheaterRepository.findAll();
 	}
 }
