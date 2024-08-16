@@ -6,7 +6,6 @@ import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,7 +34,7 @@ public class FunctionController {
 			throw new Exception(e.getMessage());
 		}
 	}
-	@GetMapping("get/{id}")
+	@GetMapping("/get/{id}")
 	public ResponseEntity<Function> getFunctionBydId(@PathVariable String id) throws Exception{
 		try { 
 	        Function function = functionServiceImpl.getFunctionById(id);
@@ -62,7 +61,7 @@ public class FunctionController {
         	throw new Exception(e.getMessage());
         }
     }
-	@GetMapping("get/all")
+	@GetMapping("/get/all")
 	public ResponseEntity<List<Function>> getAllFunctions() throws Exception{
 		try {
             List<Function> functions = functionServiceImpl.getFunctions();
