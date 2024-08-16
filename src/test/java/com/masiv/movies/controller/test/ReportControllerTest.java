@@ -46,7 +46,7 @@ public class ReportControllerTest {
         function2.setTicketsSold(80);
         List<Function> topFunctions = Arrays.asList(function1, function2);
         when(reportService.getTopFunctionByTicketsSold(10)).thenReturn(topFunctions);
-        mockMvc.perform(get("/reports/top")
+        mockMvc.perform(get("/api/reports/top")
                 .param("top", "10"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].id").value("1"))

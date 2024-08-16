@@ -22,6 +22,14 @@ final public class FunctionServiceImpl implements FunctionService {
 	private TheaterService theaterService;
 	@Override
 	public Function recordDateFunction(Function function) throws Exception {
+		List<Function> listOfFunctions = (List<Function>) iFunctionRepository.findAll();
+		for (Function functions : listOfFunctions) {
+			if(functions.getAssignedTheater().equals(function.getAssignedTheater()) || 
+					functions.getStartDate().isEqual(function.getStartDate())) {
+				throw new IllegalArgumentException("There is already a function scheduled in this theater during the specified time");
+			}
+		}
+		
 		FunctionValidator.functionValidator(function);
 		try {
 			return iFunctionRepository.save(function);

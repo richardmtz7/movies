@@ -18,7 +18,7 @@ import com.masiv.movies.models.Function;
 import com.masiv.movies.service.FunctionService;
 
 @RestController
-@RequestMapping("/function")
+@RequestMapping("/api/function")
 public class FunctionController {
 	@Autowired
 	private FunctionService functionServiceImpl;
