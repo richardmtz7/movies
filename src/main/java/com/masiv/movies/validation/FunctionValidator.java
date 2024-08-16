@@ -21,7 +21,7 @@ public class FunctionValidator {
 		}
 	}
 	public static void functionIdValidator(Function function) {
-		if (function.getFunctionId() == null) {
+		if (function.getId() == null) {
 			throw new IllegalArgumentException("The function has not been registered");
 		}
 	}

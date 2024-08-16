@@ -17,7 +17,7 @@ public class TheaterController {
 	@Autowired
 	private TheaterService theaterService;
 	@PostMapping("/create")
-	public ResponseEntity<Theater> createTheater(@RequestBody Theater theater) {
+	public ResponseEntity<Theater> createTheater(@RequestBody Theater theater) throws Exception {
 		try {
 			Theater createdTheater = theaterService.createTheater(theater);
 			return new ResponseEntity<>(createdTheater, HttpStatus.CREATED);

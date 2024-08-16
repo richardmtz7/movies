@@ -19,20 +19,27 @@ final public class FunctionServiceImpl implements FunctionService{
 	@Autowired
     private TheaterService theaterService;
 	@Override
-	public Function recordDateFunction(Function function) {
+	public Function recordDateFunction(Function function) throws Exception {
 		FunctionValidator.functionValidator(function);
-		
-		return iFunctionRepository.save(function);
+		try {
+			return iFunctionRepository.save(function);
+		} catch (Exception e) {
+			throw new Exception("Error creating function" + e);
+		}
 	}
 	@Override
 	public void cancelFunction(Function function) throws Exception {
 		FunctionValidator.functionIdValidator(function);
 		Theater theater = theaterService.getTheaterById(function.getAssignedTheater());
-		theaterService.updateAvailableSeats(theater);
-		iFunctionRepository.deleteById(function.getFunctionId());
+		try {
+			iFunctionRepository.deleteById(function.getId());
+			theaterService.updateAvailableSeats(theater);
+		} catch (Exception e) {
+			throw new Exception("Error canceling function" + e);
+		}
 	}
 	@Override
-	public Function getFunctionById(Long functionId) throws Exception {
+	public Function getFunctionById(String functionId) throws Exception {
 		Function function = iFunctionRepository.findById(functionId)
 				.orElseThrow(() -> new Exception("Function not found"));
 		Theater theater = theaterService.getTheaterById(function.getAssignedTheater());

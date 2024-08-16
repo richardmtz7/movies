@@ -31,13 +31,13 @@ public class TicketControllerTest {
 
     @Test
     public void testPurchaseTicket_Success() throws Exception {
-        Ticket ticket = new Ticket(1L, 2L, "John Doe", "25", 1L, "john.doe@example.com");
+        Ticket ticket = new Ticket("1", 2, "John Doe", "25", "1", "john.doe@example.com");
         when(ticketService.buyTicket(any(Ticket.class))).thenReturn(ticket);
 
         ResponseEntity<String> response = ticketController.purchaseTicket(ticket);
 
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        assertEquals("Purchase successful.\n Ticket: " + ticket.getPurchaseId().toString(), response.getBody());
+        assertEquals("Purchase successful.\n Ticket: " + ticket.getId().toString(), response.getBody());
     }
 
     @Test

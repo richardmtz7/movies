@@ -30,8 +30,8 @@ public class TheaterControllerTest {
     }
 
     @Test
-    public void testCreateTheater_Success() {
-        Theater theater = new Theater(1L, "Theater 1", 1L, 100L, 100L, "Description");
+    public void testCreateTheater_Success() throws Exception {
+        Theater theater = new Theater("1", "1", "1", 0, 0, "Test description");
         when(theaterService.createTheater(any(Theater.class))).thenReturn(theater);
 
         ResponseEntity<Theater> response = theaterController.createTheater(theater);
@@ -41,7 +41,7 @@ public class TheaterControllerTest {
     }
 
     @Test
-    public void testCreateTheater_BadRequest() {
+    public void testCreateTheater_BadRequest() throws Exception {
         when(theaterService.createTheater(any(Theater.class))).thenThrow(IllegalArgumentException.class);
 
         Theater theater = new Theater();

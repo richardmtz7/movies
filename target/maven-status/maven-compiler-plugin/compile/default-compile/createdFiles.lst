@@ -18,6 +18,7 @@ com\masiv\movies\service\impl\TheaterServiceImpl.class
 com\masiv\movies\service\impl\ReportServiceImpl.class
 com\masiv\movies\service\ReportService.class
 com\masiv\movies\service\TheaterService.class
+com\masiv\movies\models\Movie$MovieBuilder.class
 com\masiv\movies\validation\MovieValidator.class
 com\masiv\movies\repositories\IFunctionRepository.class
 com\masiv\movies\repositories\IMovieRepository.class

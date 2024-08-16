@@ -22,7 +22,7 @@ public class FunctionController {
 	@Autowired
 	private FunctionService functionServiceImpl;
 	@PostMapping("/create")
-	public ResponseEntity<Function> createFunction(@RequestBody Function function){
+	public ResponseEntity<Function> createFunction(@RequestBody Function function) throws Exception{
 		try {
 			Function createFunction = functionServiceImpl.recordDateFunction(function);
 			
@@ -32,7 +32,7 @@ public class FunctionController {
 		}
 	}
 	@GetMapping("get/{id}")
-	public ResponseEntity<Function> getFunctionBydId(@PathVariable Long id){
+	public ResponseEntity<Function> getFunctionBydId(@PathVariable String id){
 		try { 
 	        Function function = functionServiceImpl.getFunctionById(id);
 	        if (function == null) {

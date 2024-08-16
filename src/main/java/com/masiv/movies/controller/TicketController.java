@@ -21,7 +21,7 @@ public class TicketController {
         try {
             Ticket created = ticketService.buyTicket(ticket);
             
-            return new ResponseEntity<>("Purchase successful.\n Ticket: " + created.getPurchaseId().toString(), HttpStatus.CREATED);
+            return new ResponseEntity<>("Purchase successful.\n Ticket: " + created.getId(), HttpStatus.CREATED);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         } catch (Exception e) {

@@ -13,18 +13,28 @@ final public class TheaterServiceImpl implements TheaterService{
 	@Autowired
 	private ITheaterRepository iTheaterRepository;
 	@Override
-	public Theater createTheater(Theater theater) {
+	public Theater createTheater(Theater theater) throws Exception {
 		TheaterValidator.theaterValidator(theater);
-		return iTheaterRepository.save(theater);
+		try {
+			iTheaterRepository.save(theater);
+			
+			return theater;
+		} catch (Exception e) {
+			throw new Exception("Error creating theater" + e);
+		}
 	}
 	@Override
 	public void updateAvailableSeats(Theater theater) throws Exception {
 		TheaterValidator.theaterExistValidator(theater);
         theater.setAvailableSeats(theater.getAvailableSeats());
-        iTheaterRepository.save(theater);
+        try {
+        	iTheaterRepository.save(theater);
+		} catch (Exception e) {
+			throw new Exception("Error updating seats" + e);
+		}
 	}
 	@Override
-	public Theater getTheaterById(Long theaterId) throws Exception {
+	public Theater getTheaterById(String theaterId) throws Exception {
 		return iTheaterRepository.findById(theaterId)
                 .orElseThrow(() -> new Exception("Theater not found"));
 	}

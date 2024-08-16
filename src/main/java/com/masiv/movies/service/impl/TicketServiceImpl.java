@@ -58,7 +58,7 @@ final public class TicketServiceImpl implements TicketService{
         }
 	}
 	@Override
-	public void reserveSeats(String reserveId, Long functionId, Long numberOfTickets) {
+	public void reserveSeats(String reserveId, String functionId, Integer numberOfTickets) {
 		String reservationKey = "reservation:" + reserveId;
 	    redisTemplate.opsForValue().set(reservationKey, functionId.toString(), 15, TimeUnit.MINUTES);
 	}

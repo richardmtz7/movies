@@ -15,12 +15,12 @@ public class ReportServiceImpl implements ReportService{
 	@Autowired
 	private FunctionService functionService;
 	@Override
-	public List<Function> getTopFunctionByTicketsSold(Long top) {
+	public List<Function> getTopFunctionByTicketsSold(Integer top) {
 		List<Function> functions = functionService.getFunctions();
         
 		return getTopNByTicketsSold(functions, top);
 	}
-	private List<Function> getTopNByTicketsSold(List<Function> functions, Long top) {
+	private List<Function> getTopNByTicketsSold(List<Function> functions, Integer top) {
         functions.sort((f1, f2) -> f2.getTicketsSold().compareTo(f1.getTicketsSold()));
 
         return functions.stream().limit(top).collect(Collectors.toList());

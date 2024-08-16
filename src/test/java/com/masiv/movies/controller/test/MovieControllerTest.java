@@ -30,8 +30,8 @@ public class MovieControllerTest {
     }
 
     @Test
-    public void testCreateMovie_Success() {
-        Movie movie = new Movie(1L, "Inception", "Christopher Nolan", "Sci-Fi", 148L, "A mind-bending thriller", 2010, "PG-13");
+    public void testCreateMovie_Success() throws Exception {
+        Movie movie = new Movie("1", "Inception", "Christopher Nolan", "Sci-Fi", 148, "A mind-bending thriller", 2010, "PG-13");
         when(movieService.createMovie(any(Movie.class))).thenReturn(movie);
 
         ResponseEntity<Movie> response = movieController.createMovie(movie);
@@ -41,7 +41,7 @@ public class MovieControllerTest {
     }
 
     @Test
-    public void testCreateMovie_BadRequest() {
+    public void testCreateMovie_BadRequest() throws Exception {
         when(movieService.createMovie(any(Movie.class))).thenThrow(IllegalArgumentException.class);
 
         Movie movie = new Movie();

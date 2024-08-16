@@ -13,10 +13,10 @@ import lombok.NoArgsConstructor;
 @RedisHash("Ticket")
 public class Ticket {
 	@Id
-	private Long purchaseId; 
-	private Long numberOfTickets;
+	private String id; 
+	private Integer numberOfTickets;
 	private String buyerName;
 	private String buyerAge;
-	private Long functionId;
+	private String functionId;
 	private String buyerEmail;
 }

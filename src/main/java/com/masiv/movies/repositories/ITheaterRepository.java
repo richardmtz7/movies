@@ -1,7 +1,9 @@
 package com.masiv.movies.repositories;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import com.masiv.movies.models.Theater;
 
-public interface ITheaterRepository extends CrudRepository<Theater, Long> {}
+@Repository
+public interface ITheaterRepository extends CrudRepository<Theater, String> {}

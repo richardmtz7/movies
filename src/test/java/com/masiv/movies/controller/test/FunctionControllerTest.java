@@ -39,47 +39,47 @@ public class FunctionControllerTest {
     }
 
     @Test
-    public void testRecordDateFunction_ValidFunction() {
-        Function function = new Function(1L, 1L, 1L, new Date(), new Date(), 1L);
+    public void testRecordDateFunction_ValidFunction() throws Exception {
+        Function function = new Function("1", "1", "1", new Date(), new Date(), 100);
         when(functionRepository.save(any(Function.class))).thenReturn(function);
         Function result = functionService.recordDateFunction(function);
         assertNotNull(result);
-        assertEquals(1, result.getAssignedMovie());
+        assertEquals("1", result.getAssignedMovie());
         verify(functionRepository, times(1)).save(function);
     }
     @Test
     public void testCancelFunction_ValidFunction() throws Exception {
-    	Function function = new Function(1L, 1L, 1L, new Date(), new Date(), 1L);
-    	Theater theater = new Theater(1L, "Theater 1", 1L, 100L, 100L, "Description");
-        when(theaterService.getTheaterById(anyLong())).thenReturn(theater);
+    	Function function = new Function("1", "1", "1", new Date(), new Date(), 100);
+    	Theater theater = new Theater("1", "1", "1", 0, 0, "Test description");
+        when(theaterService.getTheaterById(any())).thenReturn(theater);
         functionService.cancelFunction(function);
         verify(theaterService, times(1)).updateAvailableSeats(theater);
-        verify(functionRepository, times(1)).deleteById(function.getFunctionId());
+        verify(functionRepository, times(1)).deleteById(function.getId());
     }
     @Test
     public void testGetFunctionById_FunctionExists() throws Exception {
-        Function function = new Function(1L, 1L, 1L, new Date(), new Date(), 1L);
-        Theater theater = new Theater(1L, "Theater 1", 1L, 100L, 100L, "Description");
-        when(functionRepository.findById(anyLong())).thenReturn(Optional.of(function));
-        when(theaterService.getTheaterById(anyLong())).thenReturn(theater);
-        Function result = functionService.getFunctionById(1L);
+        Function function = new Function("1", "1", "1", new Date(), new Date(), 100);
+        Theater theater = new Theater("1", "1", "1", 0, 0, "Test description");
+        when(functionRepository.findById(any())).thenReturn(Optional.of(function));
+        when(theaterService.getTheaterById(any())).thenReturn(theater);
+        Function result = functionService.getFunctionById("1");
         assertNotNull(result);
-        assertEquals(1, result.getAssignedMovie());
-        verify(functionRepository, times(1)).findById(1L);
+        assertEquals("1", result.getAssignedMovie());
+        verify(functionRepository, times(1)).findById("1");
     }
     @Test
     public void testGetFunctionById_FunctionNotFound() {
-        when(functionRepository.findById(anyLong())).thenReturn(Optional.empty());
+        when(functionRepository.findById(any())).thenReturn(Optional.empty());
         Exception exception = assertThrows(Exception.class, () -> {
-            functionService.getFunctionById(1L);
+            functionService.getFunctionById("1");
         });
         assertEquals("Function not found", exception.getMessage());
-        verify(functionRepository, times(1)).findById(1L);
+        verify(functionRepository, times(1)).findById("1");
     }
     @Test
     public void testGetFunctions() {
         List<Function> functions = new ArrayList<>();
-        functions.add(new Function(1L, 1L, 1L, new Date(), new Date(), 1L));
+        functions.add(new Function("1", "1", "1", new Date(), new Date(), 100));
         when(functionRepository.findAll()).thenReturn(functions);
         List<Function> result = functionService.getFunctions();
         assertNotNull(result);

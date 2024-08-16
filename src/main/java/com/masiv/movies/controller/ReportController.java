@@ -17,7 +17,7 @@ public class ReportController {
 	@Autowired
 	private ReportService reportService;
 	@GetMapping("/top")
-	public List<Function> getTopFunction(@RequestParam(defaultValue = "10") Long top){
+	public List<Function> getTopFunction(@RequestParam(defaultValue = "10") Integer top){
 		
 		return reportService.getTopFunctionByTicketsSold(top);
 	}

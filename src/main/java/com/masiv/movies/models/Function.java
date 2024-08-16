@@ -15,10 +15,10 @@ import lombok.NoArgsConstructor;
 @RedisHash("Function")
 public class Function {
 	@Id
-	private Long functionId;
-	private Long assignedMovie;
-	private Long assignedTheater;
+	private String id;
+	private String assignedMovie;
+	private String assignedTheater;
 	private Date startDate;
 	private Date endDate;
-	private Long ticketsSold = 0L;
+	private Integer ticketsSold = 0;
 }

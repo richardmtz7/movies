@@ -38,21 +38,21 @@ public class ReportControllerTest {
     @Test
     public void testGetTopFunction() throws Exception {
         Function function1 = new Function();
-        function1.setFunctionId(1L);
-        function1.setTicketsSold(100L);
+        function1.setId("1");
+        function1.setTicketsSold(100);
         
         Function function2 = new Function();
-        function2.setFunctionId(2L);
-        function2.setTicketsSold(80L);
+        function2.setId("2");
+        function2.setTicketsSold(80);
         List<Function> topFunctions = Arrays.asList(function1, function2);
-        when(reportService.getTopFunctionByTicketsSold(10L)).thenReturn(topFunctions);
+        when(reportService.getTopFunctionByTicketsSold(10)).thenReturn(topFunctions);
         mockMvc.perform(get("/reports/top")
                 .param("top", "10"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].functionId").value(1L))
-                .andExpect(jsonPath("$[0].ticketsSold").value(100L))
-                .andExpect(jsonPath("$[1].functionId").value(2L))
-                .andExpect(jsonPath("$[1].ticketsSold").value(80L));
-        verify(reportService, times(1)).getTopFunctionByTicketsSold(10L);
+                .andExpect(jsonPath("$[0].id").value("1"))
+                .andExpect(jsonPath("$[0].ticketsSold").value(100))
+                .andExpect(jsonPath("$[1].id").value("2"))
+                .andExpect(jsonPath("$[1].ticketsSold").value(80));
+        verify(reportService, times(1)).getTopFunctionByTicketsSold(10);
     }
 }
