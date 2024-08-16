@@ -13,9 +13,10 @@ import lombok.NoArgsConstructor;
 @RedisHash("Theater")
 public class Theater {
 	@Id
-	private Long theaterId;
+	private String id;
 	private String theaterName;
-	private Long cinemaId;
+	private String cinemaId;
+	private Integer availableSeats;
 	private Integer totalSeatingCapacity;
-	private String description; 
+	private String description;
 }

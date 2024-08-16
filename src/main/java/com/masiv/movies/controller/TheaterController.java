@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.masiv.movies.models.Theater;
-import com.masiv.movies.services.TheaterService;
+import com.masiv.movies.service.TheaterService;
 
 @RestController
 @RequestMapping("/theater")
@@ -17,7 +17,7 @@ public class TheaterController {
 	@Autowired
 	private TheaterService theaterService;
 	@PostMapping("/create")
-	public ResponseEntity<Theater> createTheater(@RequestBody Theater theater) {
+	public ResponseEntity<Theater> createTheater(@RequestBody Theater theater) throws Exception {
 		try {
 			Theater createdTheater = theaterService.createTheater(theater);
 			return new ResponseEntity<>(createdTheater, HttpStatus.CREATED);
