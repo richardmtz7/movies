@@ -15,7 +15,7 @@ import com.masiv.movies.models.Movie;
 import com.masiv.movies.service.MovieService;
 
 @RestController
-@RequestMapping("/movie")
+@RequestMapping("/api/movie")
 public class MovieController {
 	@Autowired
 	private MovieService movieService;

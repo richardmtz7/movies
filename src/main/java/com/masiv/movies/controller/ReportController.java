@@ -12,7 +12,7 @@ import com.masiv.movies.models.Function;
 import com.masiv.movies.service.ReportService;
 
 @RestController
-@RequestMapping("/reports")
+@RequestMapping("/api/reports")
 public class ReportController {
 	@Autowired
 	private ReportService reportService;

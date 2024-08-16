@@ -14,7 +14,7 @@ import com.masiv.movies.service.TicketService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/ticket")
+@RequestMapping("/api/ticket")
 public class TicketController {
 	@Autowired
 	private TicketService ticketService;

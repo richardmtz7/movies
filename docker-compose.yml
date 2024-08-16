@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  masiv_movies:
+    container_name: masiv_movies
+    image: tech-masiv-movie:1.0.0
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - REDIS_HOST=127.0.0.1
+      - REDIS_PORT=6379
+    depends_on:
+      - masiv_db
+
+  masiv_db:
+    container_name: masiv_movies_db
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:

@@ -16,7 +16,7 @@ import com.masiv.movies.models.Theater;
 import com.masiv.movies.service.TheaterService;
 
 @RestController
-@RequestMapping("/theater")
+@RequestMapping("/api/theater")
 public class TheaterController {
 	@Autowired
 	private TheaterService theaterService;
