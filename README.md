@@ -1,5 +1,5 @@
-# Test Backend Dveloper MasivMovies
-This project shows the translation of the requirements proposed by the technical test provided by Masiv.
+# Test Backend
+This project shows the translation of the requirements proposed by the technical test.
 The project was carried out with the JAVA language using JDK-17 and using a non-relational database, Redis.
 
 Requiriments:
@@ -19,8 +19,10 @@ Excecution: mvn spring-boot:run
 
 Linux
 compilation: ./mvnw clean install
-excecution: ./mvnw spring-boot:run
+execution: ./mvnw spring-boot:run
 
 With Docker
 docker-compose build masiv_movies
 docker-compose up
+
+DEVELOP BY Richard N.
