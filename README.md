@@ -25,4 +25,4 @@ With Docker
 docker-compose build masiv_movies
 docker-compose up
 
-DEVELOP BY Richard N.
+Developed by Richard N.
